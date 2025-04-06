@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-    "GoApis/controller"
+    "go-apis/controller"
 )
 
 func main(){
