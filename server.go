@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	userController "goapi/controller"
 	"log"
 	"net/http"
-    "go-apis/controller"
 )
 
 func main(){
