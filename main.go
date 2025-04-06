@@ -1,8 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	userController "goapi/controller"
+	userController "free-apis/controller"
 	"log"
 	"net/http"
 )
@@ -15,9 +16,13 @@ func main(){
 }
 
 func DummyUsers(w http.ResponseWriter, r * http.Request){
-	var email string = r.URL.Query().Get("email")
-    var pass string = r.URL.Query().Get("pass")
-    userController.HandleSignUp(email,pass)
+	response := userController.GetUsersJson()
+	w.Header().Set("Content-Type","application/json")
+	jsonData,err := json.Marshal(response)
+    if err != nil{
+		http.Error(w,err.Error(), http.StatusBadRequest)
+	}
+	w.Write(jsonData)
 }
 
 
